@@ -1,9 +1,6 @@
 import { z } from "zod";
+import cardSchema from "../schemas/cardSchema";
 
-const cardSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-});
 
 const cardsSchema = z.object({
   contents: z.array(cardSchema),
