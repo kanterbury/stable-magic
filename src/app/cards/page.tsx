@@ -1,9 +1,6 @@
 import { z } from "zod";
-
-const cardSchema = z.object({
-  id: z.string(),
-  name: z.string(),
-});
+import cardSchema from "../schemas/cardSchema";
+import Link from "next/link";
 
 const cardsSchema = z.object({
   contents: z.array(cardSchema),
@@ -33,7 +30,9 @@ export default async function Page() {
       <h1>Cards</h1>
       <li className="list-none">
         {cards.contents.map((card) => (
-          <ul key={card.id}>{card.name}</ul>
+          <ul key={card.id}>
+            <Link href={`/cards/${card.id}`}>{card.name}</Link>
+          </ul>
         ))}
       </li>
     </>
